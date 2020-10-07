@@ -1,5 +1,5 @@
 /// Hacker Rank - ACM - Fall 2020
-/// From A to B
+/// subarraydivision
 /// Author: Carlos L. Cuenca
 /// Date: 10/04/20
 
