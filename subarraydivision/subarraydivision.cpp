@@ -45,7 +45,7 @@ int main(int argc, char* argv[]) {
 
 		subsets = 0;
 
-		for(uint32_t index = 0; index < squares.size() - birthmonth; index++) {
+		for(uint32_t index = 0; index < squares.size() - (birthmonth - 1); index++) {
 
 			uint32_t sum     = 0     ;
 			uint32_t current = index ;
