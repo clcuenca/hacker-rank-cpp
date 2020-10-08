@@ -11,3 +11,4 @@ Collection of Hacker Rank's warmup problems written in c++
 * **Compare The Triplets**
 * **A Very Big Sum**
 * **Diagonal Difference**
+* **Plus Minus**
