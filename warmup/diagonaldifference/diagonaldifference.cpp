@@ -1,4 +1,4 @@
-/// Hacker Rank - ACM - Fall 2020
+/// Hacker Rank - Warmup
 /// Diagonal Difference
 /// Author: Carlos L. Cuenca
 /// Date: 10/07/20
