@@ -34,7 +34,7 @@ int main(int argc, char* argv[]) {
 
 	std::cin >> inputCount;
 
-	while(inputCount) {
+	while(inputCount--) {
 
 		std::cin >> count;
 
