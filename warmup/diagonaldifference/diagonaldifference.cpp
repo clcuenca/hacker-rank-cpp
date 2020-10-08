@@ -1,7 +1,7 @@
 /// Hacker Rank - ACM - Fall 2020
-/// From A to B
+/// Diagonal Difference
 /// Author: Carlos L. Cuenca
-/// Date: 10/04/20
+/// Date: 10/07/20
 
 #include<iostream>
 #include<string>
@@ -17,3 +17,10 @@ const int SUCCESS = 0;
 /// Driver Program
 
 int main(int argc, char* argv[]) {
+
+
+
+
+	return SUCCESS;
+
+}
