@@ -1,4 +1,4 @@
-# Hacker Rank - Warmup - Compare the Triplets
+# Hacker Rank - Warmup - Diagonal Difference
 
 ## Description
 
