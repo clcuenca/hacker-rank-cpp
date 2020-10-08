@@ -60,7 +60,7 @@ Sum across the primary diagonal: 11 + 5 - 12 = 4
 
 The Secondary diagonal is:
 
-```
+```c++
    4
   5
 10
