@@ -27,26 +27,33 @@ int main(int argc, char* argv[]) {
 	uint32_t one          ;
 	uint32_t tenth        ;
 	uint32_t nextMultiple ;
+	uint32_t inputCount   ;
 
 	/// -------
 	/// Program
 
-	std::cin >> students;
+	std::cin >> inputCount;
 
-	for(uint32_t number = 0; number < students; number++) {
+	while(inputCount--) {
 
-		std::cin >> grade;
+		std::cin >> students;
 
-		tenth = (grade / 10);
-		one   = (grade % 10);
+		for(uint32_t number = 0; number < students; number++) {
 
-		nextMultiple = tenth*10 + 5;
+			std::cin >> grade;
 
-		if(one >= 5) nextMultiple += 5;
+			tenth = (grade / 10);
+			one   = (grade % 10);
 
-		if((grade >= 38) && ((nextMultiple - grade) < 3)) grade = nextMultiple;
+			nextMultiple = tenth*10 + 5;
 
-		std::cout << grade << std::endl;
+			if(one >= 5) nextMultiple += 5;
+
+			if((grade >= 38) && ((nextMultiple - grade) < 3)) grade = nextMultiple;
+
+			std::cout << grade << std::endl;
+
+		}
 
 	}
 
