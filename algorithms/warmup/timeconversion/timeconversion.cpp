@@ -1,5 +1,5 @@
 /// Hacker Rank - Warmup
-/// Compare the Triplets
+/// Time Conversion
 /// Author: Carlos L. Cuenca
 /// Date: 10/07/20
 
@@ -57,10 +57,13 @@ int main(int argc, char* argv[]) {
 		uint32_t minutes    = std::stoi(minuteString);
 		uint32_t seconds    = std::stoi(secondString);
 
-		hours = (hours + 12) % 24; 
+		if(timePeriod == "PM") {
 
-	    if(!hours && timePeriod == "PM") hours += 12;
+			hours = (hours + 12) % 24;
 
+			if(!hours) hours = 12;
+
+		} else if(hours == 12 && timePeriod == "AM") hours = 0;
 
 	    if(hours < 10) hourString = "0" + std::to_string(hours);
 
