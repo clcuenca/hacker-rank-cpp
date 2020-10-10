@@ -8,6 +8,11 @@
 #include<vector>
 #include<cmath>
 
+/// -----------------
+/// Program Constants
+
+const int SUCCESS = 0;
+
 /// --------------
 /// Driver Program
 
@@ -22,48 +27,53 @@ int main(int argc, char* argv[]) {
 	int      orangePoint   ;
 	uint32_t appleAmount   ;
 	uint32_t orangeAmount  ;
+	uint32_t inputCount    ;
 
 	/// -------
 	/// Program
 
-	std::cin >> houseStart  >> houseEnd     ;
-	std::cin >> applePoint  >> orangePoint  ;
-	std::cin >> appleAmount >> orangeAmount ;
+	while(inputCount--) {
 
-	std::vector<int> apples(appleAmount);
-	std::vector<int> oranges(orangeAmount);
+		std::cin >> houseStart  >> houseEnd     ;
+		std::cin >> applePoint  >> orangePoint  ;
+		std::cin >> appleAmount >> orangeAmount ;
 
-	for(uint32_t index = 0; index < apples.size(); index++)
-		std::cin >> apples[index];
+		std::vector<int> apples(appleAmount);
+		std::vector<int> oranges(orangeAmount);
 
-	for(uint32_t index = 0; index < oranges.size(); index++)
-		std::cin >> oranges[index];
+		for(uint32_t index = 0; index < apples.size(); index++)
+			std::cin >> apples[index];
 
-	uint32_t appleCount = 0;
+		for(uint32_t index = 0; index < oranges.size(); index++)
+			std::cin >> oranges[index];
 
-	for(uint32_t index = 0; index < apples.size(); index++) {
+		uint32_t appleCount = 0;
 
-		int landingPoint = applePoint + apples[index];
+		for(uint32_t index = 0; index < apples.size(); index++) {
 
-		if(landingPoint >= houseStart && landingPoint <= houseEnd)
-			appleCount++;
+			int landingPoint = applePoint + apples[index];
+
+			if(landingPoint >= houseStart && landingPoint <= houseEnd)
+				appleCount++;
+
+		}
+
+		uint32_t orangeCount = 0;
+
+		for(uint32_t index = 0; index < oranges.size(); index++) {
+
+			int landingPoint = orangePoint + oranges[index];
+
+			if(landingPoint >= houseStart && landingPoint <= houseEnd)
+				orangeCount++;
+
+		}
+
+		std::cout << appleCount  << std::endl;
+		std::cout << orangeCount << std::endl;
 
 	}
 
-	uint32_t orangeCount = 0;
-
-	for(uint32_t index = 0; index < oranges.size(); index++) {
-
-		int landingPoint = orangePoint + oranges[index];
-
-		if(landingPoint >= houseStart && landingPoint <= houseEnd)
-			orangeCount++;
-
-	}
-
-	std::cout << appleCount  << std::endl;
-	std::cout << orangeCount << std::endl;
-
-	return 0;
+	return SUCCESS;
 
 }
