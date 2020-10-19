@@ -23,13 +23,10 @@ int main(int argc, char* argv[]) {
     /// Program Variables
 
     std::string input;
-    uint64_t simplicity;
-    uint64_t remove;
+    uint64_t simplicity = 0;
+    uint64_t remove = 0;
 
     std::cin >> input;
-
-    simplicity = 0;
-    remove     = 0;
 
     std::vector<int> track('z' - 'a', 0);
 

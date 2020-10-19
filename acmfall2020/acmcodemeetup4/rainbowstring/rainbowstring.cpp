@@ -26,29 +26,57 @@ int main(int argc, char* argv[]) {
 
 	std::cin >> inputString;
 
-	count = 0;
-	bitMaximum = (1 << inputString.size()) - 1;
+	count = 1;
 
-	for(uint32_t index = 0; index <= bitMaximum; index++) {
+		//  We loop through all t combinations
+	for(int t = 1; t <= inputString.size(); t++) {
+		
+		std::vector<int> combinations(t + 2);
 
-		std::vector<uint32_t> hash('z' - 'a', 0);
+		for(int j = 0; j < t; j++)
+			combinations[j] = j;
 
-		uint32_t current = index;
-		uint32_t jindex = 0;
+		combinations[t] = inputString.size();
+		combinations[t + 1] = 0;
 
-		while(current > 0) {
+		int j = 0;
 
-			if(current & 1) hash[inputString[jindex] - 'a']++;
+		while(j < t) {
 
-			if(hash[inputString[jindex] - 'a'] > 1) break;
+			std::vector<int> hash('z' - 'a', 0);
+			bool invalid = false;
 
-			jindex++;
+			for(int index = 0; index < t; index++) {
 
-			current >>= 1;
+				int jindex = inputString[combinations[index]] - 'a';
+
+				hash[jindex]++;
+
+				if(hash[jindex] > 1) {
+
+					invalid = true;
+
+					break;
+
+				}
+
+			}
+
+			if(!invalid) count++;
+
+			j = 0;
+
+			while(combinations[j] + 1 == combinations[j + 1]) {
+
+				combinations[j] = j;
+
+				j++;
+
+			}
+
+			combinations[j]++;
 
 		}
-
-		if(!current) count++;
 
 	}
 
