@@ -1,7 +1,7 @@
 /// Hacker Rank
-/// Simplicity of Strings
+/// Climbing the Leaderboard
 /// Author: Carlos L. Cuenca
-/// Date: 2/1/21
+/// Date: 2/2/21
 
 #include<iostream>
 #include<vector>
@@ -19,33 +19,29 @@ int main(int argc, char* argv[]) {
     int players     ;
     int games       ; 
     int scoreBuffer ;
-    int rank    = 1 ;
 
-    std::vector<std::pair<int, int>> ranked(0);
-    std::vector<int>                 ranking(0);
+    std::vector<int> ranked  (0);
     
     /// -------------
     /// Program Start
 
     std::cin >> players;
 
-    // Start the first one
-    std::cin >> scoreBuffer;
-
-    ranked.push_back(std::pair<int, int>(rank, scoreBuffer));
-
     // Loop through the rest
-    for(int index = 1; index < players; index++) {
+    for(int index = 0; index < players; index++) {
 
         std::cin >> scoreBuffer;
         
-        // Keep the same rank until we reach a different number
-        if(scoreBuffer != ranked[ranked.size() - 1].second) {
+        //.If it's empty, just add in as-is
+        if(!ranked.size()) {
             
-            rank++;
-
-            ranked.push_back(std::pair<int, int>(rank, int(scoreBuffer)));
-
+            ranked.push_back(scoreBuffer);
+            
+            // Keep the same rank until we reach a different number
+        } else if(scoreBuffer != ranked.back()) {
+            
+            ranked.push_back(scoreBuffer);
+            
         }
 
     }
@@ -58,80 +54,35 @@ int main(int argc, char* argv[]) {
 
         int intervalStart = 0;
         int intervalEnd   = ranked.size() - 1;
-        
-        rank = 1;
-        
-        if(scoreBuffer < ranked[intervalEnd].second) {
+        int rank          = 0;
+
+        while((intervalEnd - intervalStart) >= 1) {
             
-            rank = ranked[intervalEnd].first + 1;
+            int middle = intervalStart + ((intervalEnd - intervalStart) / 2);
             
-        }
+            if(scoreBuffer == ranked[middle]) {
 
-        while(scoreBuffer > ranked[intervalEnd].second && scoreBuffer < ranked[intervalStart].second) {
-            
-            int half   = (intervalEnd - intervalStart) / 2;
-            int middle = intervalStart + half;
-
-            if(scoreBuffer > ranked[middle].second) {
-
-                intervalEnd = middle;
-
-            } else if(scoreBuffer < ranked[middle].second) {
-
-                intervalStart = middle;
-
-            } else if(scoreBuffer == ranked[middle].second) {
-
-                rank = ranked[middle].first;
+                rank = middle;
 
                 break;
+                
+            } else if(scoreBuffer > ranked[middle]) {
+
+                intervalEnd = middle - 1;
+
+            } else if(scoreBuffer < ranked[middle]) {
+
+                intervalStart = middle + 1;
 
             }
-            
-            if((intervalEnd - intervalStart) <= 1) {
-                
-                if(scoreBuffer > ranked[intervalEnd].second && scoreBuffer < ranked[intervalStart].second) {
-                    
-                    rank = ranked[intervalEnd].first;
-                    
-                }
-                
-                if(scoreBuffer == ranked[intervalStart].second) {
-                    
-                    rank = ranked[intervalStart].first;
-                    
-                }
-                
-                if(scoreBuffer == ranked[intervalEnd].second) {
-                    
-                    rank = ranked[intervalEnd].first;
-                    
-                }
-                
-                if(scoreBuffer > ranked[intervalStart].second) {
-                    
-                    rank = ranked[intervalStart].first - 1;
-                    
-                }
-                
-                if(scoreBuffer < ranked[intervalEnd].second) {
-                    
-                    rank = ranked[intervalEnd].first + 1;
-                    
-                }
-                
-                break;
-                
-            }
+
+            rank = intervalStart + (scoreBuffer < ranked[intervalStart]);
 
         }
         
-        ranking.push_back(rank);
+        std::cout << rank + 1 << std::endl;
 
     }
-
-    for(int index = 0; index < ranking.size(); index++)
-        std::cout << ranking[index] << std::endl;
 
     return SUCCESS;
 
