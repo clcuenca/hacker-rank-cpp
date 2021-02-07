@@ -22,8 +22,6 @@ int main(int argc, char* argv[]) {
     int input            ;
     int games            ;
     int score            ;
-    int minimum          ;  
-    int maximum          ;
     int minimumCount = 0 ;
     int maximumCount = 0 ;
 
@@ -35,25 +33,20 @@ int main(int argc, char* argv[]) {
     while(input--) {
 
         std::cin >> games;
+        std::cin >> score;
 
-        for(uint32_t index = 0; index < games; index++) {
+        int minimum = score;
+        int maximum = score;
+
+        for(uint32_t index = 1; index < games; index++) {
 
             std::cin >> score;
+            
+            maximumCount += (maximum < score);
+            minimumCount += (minimum > score);
 
-            if(!index) {
-
-                minimum = score;
-                maximum = score;
-
-            } else {
-
-                maximumCount += (maximum < score);
-                minimumCount += (minimum > score);
-
-                minimum = std::min(minimum, score);
-                maximum = std::max(maximum, score);
-
-            }
+            minimum = std::min(minimum, score);
+            maximum = std::max(maximum, score);
 
         }
 
